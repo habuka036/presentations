@@ -7,7 +7,7 @@ documents and tools for my presentations
 
 ```
 ホスト側にて
-$ export VERSION=0.1
+$ export VERSION=0.2
 $ sudo -E docker pull habuka036/rabbit:${VERSION}
 $ sudo -E docker run --rm -it -e DISPLAY=localhost:10.0 -v `pwd`:/var/slide habuka036/rabbit:${VERSION} bash
 
