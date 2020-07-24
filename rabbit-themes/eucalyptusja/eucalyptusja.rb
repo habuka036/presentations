@@ -183,6 +183,9 @@ end
 include_theme("slide-footer-info")
 
 # takahashi method
+@lightning_talk_color = base_light_color
+@lightning_talk_font_family = find_font_family("Cica")
+@lightning_talk_background_color = base_background_color
 @lightning_talk_proc_name = "lightning-simple"
 @lightning_talk_as_large_as_possible = true
 

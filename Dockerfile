@@ -6,6 +6,7 @@ ENV RUBY_VERSION 2.5.1
 ENV RUBY_ABI_VERSION 2.5.0
 ENV RABBIT_VERSION 2.2.1
 ENV YUTAPON_VERSION 081
+ENV CICA_VERSION 5.0.1
 
 ENV HOME /root
 ENV ANYENV_HOME $HOME/.anyenv
@@ -48,6 +49,9 @@ COPY rabbit-themes/eucalyptusja-images/* $RBENV_ROOT/versions/$RUBY_VERSION/lib/
 
 RUN mkdir /usr/share/fonts/truetype/yutapon/
 RUN wget -O yutapon_coding_${YUTAPON_VERSION}.zip http://net2.system.to/pc/cgi-bin/download.cgi?file=yutapon_coding_${YUTAPON_VERSION}.zip && unzip yutapon_coding_${YUTAPON_VERSION}.zip && mv yutapon_coding_${YUTAPON_VERSION}.ttc README.TXT /usr/share/fonts/truetype/yutapon/ && rm -f yutapon_coding_${YUTAPON_VERSION}.zip
+
+RUN mkdir /usr/share/fonts/truetype/cica/
+RUN wget -O Cica_v${CICA_VERSION}_with_emoji.zip https://github.com/miiton/Cica/releases/download/v${CICA_VERSION}/Cica_v${CICA_VERSION}_with_emoji.zip && unzip Cica_v${CICA_VERSION}_with_emoji.zip && mv COPYRIGHT.txt Cica-*.ttf LICENSE.txt /usr/share/fonts/truetype/cica/ && rm -f ica_v${CICA_VERSION}_with_emoji.zip
 
 RUN apt-get -y install vim
 RUN sed -i -e "s/^PermitRootLogin .*/PermitRootLogin yes/" /etc/ssh/sshd_config
