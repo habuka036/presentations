@@ -2,9 +2,9 @@ FROM ubuntu:16.04
 
 ENV PYTHON_VERSION 2.7.15
 ENV GO_VERSION 1.10.3
-ENV RUBY_VERSION 2.5.1
+ENV RUBY_VERSION 2.5.8
 ENV RUBY_ABI_VERSION 2.5.0
-ENV RABBIT_VERSION 2.2.1
+ENV RABBIT_VERSION 3.0.0
 ENV YUTAPON_VERSION 081
 ENV CICA_VERSION 5.0.1
 
@@ -17,9 +17,11 @@ ENV PATH $GOPATH/bin:$PATH
 RUN apt-get update -q -y
 RUN apt-get -y install curl git jq nkf make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget llvm libncurses5-dev libncursesw5-dev xz-utils software-properties-common zip openssh-server net-tools
 
-RUN git clone https://github.com/riywo/anyenv $ANYENV_HOME
+RUN git clone https://github.com/anyenv/anyenv $ANYENV_HOME
 ENV PATH $ANYENV_HOME/bin:$PATH
-RUN mkdir $ANYENV_ENV
+#RUN mkdir $ANYENV_ENV
+#RUN anyenv init
+RUN anyenv install --force-init
 
 RUN anyenv install pyenv
 ENV PATH $ANYENV_ENV/pyenv/bin:$ANYENV_ENV/pyenv/shims:$PATH
