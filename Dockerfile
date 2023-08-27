@@ -57,9 +57,12 @@ RUN mkdir /usr/share/fonts/truetype/cica/
 RUN wget -O Cica_v${CICA_VERSION}.zip https://github.com/miiton/Cica/releases/download/v${CICA_VERSION}/Cica_v${CICA_VERSION}.zip && unzip Cica_v${CICA_VERSION}.zip && mv COPYRIGHT.txt Cica-*.ttf LICENSE.txt /usr/share/fonts/truetype/cica/ && rm -f Cica_v${CICA_VERSION}.zip
 
 RUN apt-get -y install vim
-RUN sed -i -e "s/^PermitRootLogin .*/PermitRootLogin yes/" /etc/ssh/sshd_config
+RUN sed -i -e "s/^#PermitRootLogin .*/PermitRootLogin yes/" /etc/ssh/sshd_config
 
-RUN /etc/init.d/ssh start
+RUN echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> $HOME/.bashrc
+RUN echo 'eval "$(anyenv init -)"' >> $HOME/.bashrc
+
+#RUN /etc/init.d/ssh start
 
 RUN rm -rf /var/lib/apt/lists/*
 
